@@ -8,12 +8,16 @@ from tea_client.errors import HttpClientError
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
+# Constants
+# Note: These constants can be modified as needed
 DATA_DIR = '../../data/raw'
 RETRY_LIMIT = 5
 RETRY_DELAY = 5  # seconds
 
+# Initialize the PapersWithCode client
 client = PapersWithCodeClient()
 
+# Save data to a JSON file
 def save_json(data, filename):
     with open(filename, 'w') as f:
         json.dump(data, f, indent=4)
@@ -22,6 +26,7 @@ def save_json(data, filename):
 # Ensure the data/raw directory exists
 os.makedirs(DATA_DIR, exist_ok=True)
 
+# Fetch areas
 def fetch_areas():
     logging.info("Fetching areas...")
     try:
@@ -33,12 +38,14 @@ def fetch_areas():
         logging.error(f"Error fetching areas: {e}")
         return None
 
+# Convert area to dictionary
 def area_to_dict(area):
     return {
         'id': area.id,
         'name': area.name,
     }
 
+# Fetch tasks for an area
 def fetch_tasks(area_id):
     logging.info(f"Fetching tasks for area {area_id}...")
     tasks = []
@@ -61,6 +68,7 @@ def fetch_tasks(area_id):
     save_json([task_to_dict(task) for task in tasks], os.path.join(DATA_DIR, f'tasks_{area_id}.json'))
     return tasks
 
+# Convert task to dictionary
 def task_to_dict(task):
     return {
         'id': task.id,
@@ -68,6 +76,7 @@ def task_to_dict(task):
         'description': task.description,
     }
 
+# Fetch details for a task
 def fetch_task_details(task_id):
     logging.info(f"Fetching details for task {task_id}...")
     try:
@@ -82,6 +91,7 @@ def fetch_task_details(task_id):
         logging.error(f"Error fetching details for task {task_id}: {e}")
         return None
 
+# Fetch evaluations for a task
 def fetch_evaluations(task_id):
     logging.info(f"Fetching evaluations for task {task_id}...")
     evaluations = []
@@ -104,6 +114,7 @@ def fetch_evaluations(task_id):
     save_json([evaluation_to_dict(evaluation) for evaluation in evaluations], os.path.join(DATA_DIR, f'task_{task_id}_evaluations.json'))
     return evaluations
 
+# Convert evaluation to dictionary
 def evaluation_to_dict(evaluation):
     return {
         'id': evaluation.id,
@@ -112,6 +123,7 @@ def evaluation_to_dict(evaluation):
         'description': evaluation.description,
     }
 
+# Fetch evaluation results
 def fetch_evaluation_results(evaluation_id):
     logging.info(f"Fetching results for evaluation {evaluation_id}...")
     results = []
@@ -134,6 +146,7 @@ def fetch_evaluation_results(evaluation_id):
     save_json([result_to_dict(result) for result in results], os.path.join(DATA_DIR, f'evaluation_{evaluation_id}_results.json'))
     return results
 
+# Convert evaluation result to dictionary
 def result_to_dict(result):
     return {
         'id': result.id,
@@ -144,6 +157,7 @@ def result_to_dict(result):
         'evaluated_on': result.evaluated_on,
     }
 
+# Fetch parents of a task
 def fetch_parents(task_id):
     logging.info(f"Fetching parents for task {task_id}...")
     parents = []
@@ -166,6 +180,7 @@ def fetch_parents(task_id):
     save_json([task_to_dict(parent) for parent in parents], os.path.join(DATA_DIR, f'task_{task_id}_parents.json'))
     return parents
 
+# Fetch children of a task
 def fetch_children(task_id):
     logging.info(f"Fetching children for task {task_id}...")
     children = []
@@ -188,6 +203,7 @@ def fetch_children(task_id):
     save_json([task_to_dict(child) for child in children], os.path.join(DATA_DIR, f'task_{task_id}_children.json'))
     return children
 
+# Main function to fetch all relevant data
 def main():
     areas = fetch_areas()
     if not areas:
@@ -215,5 +231,6 @@ def main():
 
     logging.info("Relevant data fetched and saved successfully.")
 
+
 if __name__ == "__main__":
-    main()  # Run in full mode
+    main()
