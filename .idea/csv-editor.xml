@@ -3,7 +3,35 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="/app_data/tasks.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/app_data/tasks_copy.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/data/interim/evaluations_by_task.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/data/interim/evaluations_by_task_2.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/data/interim/tasks_by_area.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -17,7 +45,14 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="/data/processed/tasks_by_area.csv">
+        <entry key="/data/processed/task_outline.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/data/processed/tasks.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
