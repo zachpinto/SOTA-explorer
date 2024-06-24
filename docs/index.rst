@@ -14,8 +14,6 @@ Contents:
    getting-started
    commands
 
-
-
 Indices and tables
 ==================
 

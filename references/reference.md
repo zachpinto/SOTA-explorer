@@ -1,0 +1,1 @@
+Acknowledgement is given to the [Paperswithcode](https://paperswithcode.com/about) team for allowing me to put this application together with their wonderful API client
