@@ -16,7 +16,7 @@ if api_key is None:
 client = openai.OpenAI(api_key=api_key)
 
 DATA_DIR = '../../data/processed'
-OUTPUT_FILE = '../../data/processed/tasks_layman_descriptions.csv'
+OUTPUT_FILE = '../../data/interim/tasks_layman_descriptions.csv'
 MODEL = 'gpt-3.5-turbo'
 
 
